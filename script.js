@@ -43,10 +43,6 @@ function parseInput(input){
     }
 }
 
-function testFunction(){
-    alert("this test worms!!");
-}
-
 function checkWinner(playerTurn, computerTurn){
     if(playerTurn == computerTurn ){
         return "Its a draw!!";
@@ -104,27 +100,6 @@ function clickGame(input) {
     //outputString = "Computer:" + computerScore + " Player:" + playerScore; 
     //updateHistory(outputString); 
 
-}
-
-//check user imput if still playing
-function stillPlaying(input) {
-    switch(input){
-        case ("yes"):
-            gameLoop = true;
-            break;
-        case("y"):
-            gameLoop = true;
-            break;
-        case("no"):
-            gameLoop = false;
-            break;
-        case("n"):
-            gameLoop = false;
-            break;
-        default:
-            console.log("no valid response! Exiting game..")
-            gameLoop = false;
-    }
 }
 
 function updateScore(){
