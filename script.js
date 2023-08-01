@@ -79,7 +79,6 @@ function checkWinner(playerTurn, computerTurn){
         console.log("check winner: ", playerTurn, computerTurn)
         return "something went wrong!";
     }
-   // <h2>✊ > ✌️ || ✋ > ✊ || ✌️ > ✋</h1>
 }
 
 // starting message
@@ -88,38 +87,23 @@ console.log("To play : enter '✊' || 'rock' || '✋' || 'scissors' || '✌️' 
 
 function clickGame(input) {
     let cTurn =  computerRPC()
+    //console.log(cTurn);
     let pTurn = parseInput(input)
-    
-    cTurn = '✋';
-
     let outputString = "";
-    //console.log("you chose", pTurn);
+
     outputString = "you chose" + pTurn; 
     updateHistory(outputString);
-    //console.log("computer chose",cTurn);
+
     outputString = "computer chose" + cTurn;
     updateHistory(outputString);
-    //console.log(checkWinner(pTurn, cTurn));
+
     outputString = checkWinner(pTurn, cTurn) 
     updateHistory(outputString);
-    //console.log("Computer:", computerScore," Player:", playerScore);    
-    outputString = "Computer:" + computerScore + " Player:" + playerScore; 
-    updateHistory(outputString); 
+ 
+    updateScore()
+    //outputString = "Computer:" + computerScore + " Player:" + playerScore; 
+    //updateHistory(outputString); 
 
-}
-
-
-function oneGame() {
-    
-    let myInput = prompt("Your response:");
-    let cTurn =  computerRPC()
-    let pTurn = parseInput(myInput)
-    
-    console.log("you chose", pTurn);
-    console.log("computer chose",cTurn);
-    console.log(checkWinner(pTurn, cTurn));
-    
-    console.log("Computer:", computerScore," Player:", playerScore);    
 }
 
 //check user imput if still playing
@@ -143,6 +127,15 @@ function stillPlaying(input) {
     }
 }
 
+function updateScore(){
+    const cstring = document.querySelector('#cscore');
+    const pstring = document.querySelector('#pscore');
+    cstring.innerHTML = "Computer Score : " + computerScore;
+    console.log(cstring.innerHTML)
+    pstring.innerHTML = "Player Score : " + playerScore;
+}
+
+//updates the history div
 function updateHistory(string,) {
     const history = document.querySelector('#history');
     const content = document.createElement('div');
@@ -150,13 +143,3 @@ function updateHistory(string,) {
     content.textContent = string;
     history.appendChild(content);
 }
-
-/*
-
-while (gameLoop){
-    oneGame();
-    let checkQuit = prompt("play again? y/n");
-    stillPlaying(checkQuit);
-    
-}
-*/
